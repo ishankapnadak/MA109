@@ -59,6 +59,7 @@
 
 \usepackage[a4paper]{geometry}
 \usepackage{lipsum}
+\usepackage{xcolor,cancel}
 
 \usepackage{cleveref}
 \crefname{thm}{Theorem}{Theorems}
@@ -124,7 +125,7 @@
     \item[3 (ii)] Prove that the sequence $a_n \coloneqq \left\{ (-1)^n \left( \ddfrac{1}{2} - \ddfrac{1}{n} \right) \right\}_{n \geq 1}$ is not convergent.
     
     \begin{soln}
-        We will prove this result by contradiction. First, observe that the sequence $b_n \coloneqq \ddfrac{(-1)^n}{n}$ is convergent and its limit is $0$. This is true because its absolute value behaves the same way as $\ddfrac{1}{n}$ (try proving this with the $\epsilon-N$ definition to work out the details). We also know that the sequence $\{(-1)^n\}_{n \geq 1}$ is not convergent. (Why?) Now, let us assume that the given sequence $(a_n)$ converges. We have
+        We will prove this result by contradiction. First, observe that the sequence $b_n \coloneqq \ddfrac{(-1)^n}{n}$ is convergent and its limit is $0$. This is true because its absolute value behaves the same way as $\ddfrac{1}{n}$ (try proving this with the $\epsilon$-$N$ definition to work out the details). We also know that the sequence $\{(-1)^n\}_{n \geq 1}$ is not convergent. (Why?) Now, let us assume that the given sequence $(a_n)$ converges. We have
         \[
             a_n \coloneqq \left\{ (-1)^n \left( \ddfrac{1}{2} - \ddfrac{1}{n} \right) \right\} = \frac{(-1)^n}{2} - \frac{(-1)^n}{n}
         \]
@@ -240,6 +241,197 @@
     %\begin{soln}
         %We only need to check continuity of $f$ at $x=2$. It is trivially at all other points in the interval $[1,3]$. Evaluating the left hand side limit, we see that $\lim\limits_{x \to 2^-} f(x) = \lim\limits_{x \to 2^-} \ddfrac{x}{1} = 2$. Evaluating the right hand side limit, we see that $\lim\limits_{x \to 2^+} f(x) = \lim\limits_{x \to 2^+} \sqrt{6-x} = 2$. Thus, the limits on both sides exist and are equal to $2$. Hence, $\lim\limits_{x \to 2}f(x) = 2$. Note however that $f(2) = 1 \neq 2 =  \lim\limits_{x \to 2}f(x)$. Thus, $f$ is \textbf{not} continuous at $x=2$ (it has a removable discontinuity). 
     %\end{soln}
+\end{enumerate}
+
+\newpage\section{Week 2}
+\begin{center}
+	2nd December, 2020
+\end{center}
+\textbf{Sheet 1.}
+\begin{enumerate}[leftmargin=*]
+    \itemsep0.5em
+    \item[13 (ii)] Discuss the continuity of the following function :
+    \[
+        f(x) = \begin{cases}
+            x \sin\left( \ddfrac{1}{x} \right) & \text{ if } x \neq 0 \\
+            0 & \text{ if } x=0
+        \end{cases}
+    \]
+    \begin{soln}
+        At all points other than $x=0$, the given function is trivially continuous (since it is the product and composition of continuous functions). All that remains is to check the continuity of $f$ at the point $x=0$. Note that 
+        \[
+            \abs{f(x)} = \abs{x \sin\left( \frac{1}{x} \right)} \leq \abs{x}
+        \]
+        for all $x \neq 0$. Thus, we have
+        \[
+            0 \leq \abs{f(x)} \leq \abs{x}
+        \]
+        Utilising Sandwich Theorem, we see that
+        \[
+            \lim_{x \to 0} \; f(x) = 0
+        \]
+        Since $f(0)$ is given to be $0$, we see that $\lim\limits_{x \to 0} f(x) = f(0)$, proving continuity of $f$ at $x=0$. Thus, $f$ is continuous everywhere.
+    \end{soln}
+    
+    \newpage 
+    
+    \item[15] Let $f \colon \mathbb{R} \rightarrow \mathbb{R}$ be defined as follows. 
+    \[
+        f(x) = \begin{cases}
+            x^2 \sin\left( \ddfrac{1}{x} \right) & \text{ if } x \neq 0 \\
+            0 & \text{ if } x=0
+        \end{cases}
+    \]
+    Show that $f$ is differentiable on $\mathbb{R}$. Is $f^{\prime}$ a continuous function?
+    \begin{soln}
+        Clearly, $f$ is differentiable for all $x \neq 0$. Using the chain rule and product rule, we compute $f^{\prime}$ as 
+        \[
+            f^{\prime}(x) = 2x \sin\left( \frac{1}{x} \right) - \cos\left( \frac{1}{x} \right)
+        \]
+        for $x \neq 0$. Now, all that remains to be checked is the differentiability of $f$ at $x=0$. We have
+        \[
+            \lim_{h \to 0} \; \frac{f(h) - f(0)}{h} = \lim_{h \to 0} \; h \sin{\left( \frac{1}{h}\right)}
+        \]
+        From the previous question, this limit exists and is equal to $0$. Thus, $f$ is differentiable on all of $\mathbb{R}$ and its derivative is defined as
+        \[
+            f^{\prime}(x) = \begin{cases}
+                2x \sin \left( \ddfrac{1}{x} \right) - \cos \left( \ddfrac{1}{x} \right) & \text{ if } x \neq 0 \\
+                0 & \text{ if } x = 0
+            \end{cases}
+        \]
+        Clearly, $f^{\prime}$ is continuous at all $x \neq 0$. All that remains is to check continuity of $f^{\prime}$ at $x=0$. It turns out that $f^{\prime}$ is in fact \textit{not} continuous at $x=0$. We will use the sequential criterion of continuity to prove this. Consider the sequence:
+        \[
+            x_n \coloneqq \frac{1}{2n\pi}, \quad n \in \mathbb{N}
+        \] Clearly, $x_n \to 0$ as $n \to \infty$. However, 
+        \[
+            f^{\prime}(x_n) = \cancel{\frac{2}{2n\pi} \cdot \sin\left( 2n\pi \right)} - \cos \left( 2n \pi \right) = -1
+        \]
+        We see that $\lim\limits_{n \to \infty} f(x_n)$ is $-1$, which is not equal to $f^{\prime}(0)$. Hence, $f^{\prime}$ is not continuous at $x=0$. This is an example of a differentiable function whose derivative is not continuous.
+    \end{soln}
+    
+    \newpage 
+    
+    \item[18] Let $f \colon \mathbb{R} \rightarrow \mathbb{R}$ satisfy
+    \[
+        f(x+y) = f(x) \cdot f(y)  \; \text{ for all } x,y \in \mathbb{R}
+    \]
+    If $f$ is differentiable at $0$, then show that $f$ is differentiable at every $c \in \mathbb{R}$ and $f^{\prime}(c) = f^{\prime}(0) \cdot f(c)$.
+    \begin{soln}
+        We have that $f(x+y) = f(x) \cdot f(y)$ for all $x,y \in \mathbb{R}$. On substituting $x=y=0$, we obtain 
+        \[
+            f(0) = f(0) \cdot f(0) \implies f(0) = 0 \text{ or } 1
+        \]
+        First, we consider the case that $f(0)=0$. We have
+        \[
+            f(x) = f(x+0) = f(x) \cdot f(0) \implies f(x) = 0
+        \]
+        for all $x$. Thus, $f \equiv 0$ is trivially differentiable and $f^{\prime}(c) = 0 = f^{\prime}(0) \cdot f(c)$ for all $c \in \mathbb{R}$. 
+        \medskip
+        
+        Now consider that $f(0) = 1$. For all $c \in \mathbb{R}$, we have
+        \[
+            \lim_{h \to 0} \; \frac{f(c+h) - f(c)}{h} = \lim_{h \to 0} \; \frac{f(c)f(h) - f(c) f(0)}{h} = f(c) \cdot \left( \lim_{h \to 0} \; \frac{f(h) - f(0)}{h} \right)
+        \]
+        If $f$ is differentiable at $0$, then the above limit exists. Thus, if $f$ is differentiable at $0$, then it is differentiable at every $c \in \mathbb{R}$ and $f^{\prime}(c) = f^{\prime}(0) \cdot f(c)$.
+    \end{soln}
+    
+    \newpage
+    
+    \textbf{Optional Exercises.}
+    
+    \item[7] Let $f \colon (a,b) \rightarrow \mathbb{R}$ and $c \in (a,b)$. Show that the following statements are equivalent. 
+    \begin{enumerate}[label = (\roman*)]
+        \item $f$ is differentiable at $c$.
+        \item There exists $\delta>0$, \textcolor{blue}{$\alpha \in \mathbb{R}$} and a function $\epsilon_1 \colon (-\delta, \delta) \rightarrow \mathbb{R}$ such that $\lim\limits_{h \to 0} \epsilon_1(h) = 0$ and
+        \[
+            f(c+h) = f(c) + \alpha h + h \epsilon_1(h)
+        \]
+        for all $h \in (-\delta, \delta)$.
+        \item There exists $\alpha \in \mathbb{R}$ such that
+        \[
+            \lim_{h \to 0} \left( \frac{\abs{f(c+h) - f(c) - \alpha h}}{\abs{h}} \right) = 0
+        \]
+    \end{enumerate}
+    \begin{soln}
+        To show the equivalence of statements $(i)$-$(iii)$, we must show that every statement implies every other statement, that is, a total of $6$ implications. However, we can get away with just showing three implications. We will show that $(i) \Rightarrow (ii)$, $(ii) \Rightarrow (iii)$ and $(iii) \Rightarrow (i)$. This is sufficient to conclude the equivalence of the three statements. (Why?)
+        \medskip
+        
+        $(i) \Rightarrow (ii)$ : Since we are given that $f$ is differentiable at $c$, $f^{\prime}(c)$ exists. We first pick $\delta \coloneqq \min\left\{c-a, b-c\right\}$. Clearly $\delta>0$ and $(c-\delta, c+\delta) \subset (a,b)$. Now, since $f$ is differentiable at $c$, $f^{\prime}(c)$ exists. Define $\alpha \coloneqq f^{\prime}(c)$ and 
+        \[
+            \epsilon_1(h) = \begin{cases}
+                \ddfrac{f(c+h) - f(c) - \alpha h}{h} & \text{ if } h \neq 0 \\
+                0 & \text{ if } h = 0
+            \end{cases}
+        \]
+        Since $(c-\delta, c+\delta) \subset (a,b)$, $f(c+h)$ is well defined for all $h \in (-\delta, \delta)$. Now, 
+        \[
+            \lim_{h \to 0} \; \epsilon_1(h) = \underbrace{\left( \lim_{h \to 0} \; \frac{f(c+h) - f(c)}{h} \right)}_{\alpha} - \alpha = 0
+        \]
+        Further, some simple algebraic manipulation yields that $f(c+h) = f(c) + \alpha h + h\epsilon_1(h)$ for $h \in (-\delta, \delta), h \neq 0$. Verify that this equation also holds for $h=0$. It then follows that $f(c+h) = f(c) + \alpha h + h\epsilon_1(h)$ for all $h \in (-\delta, \delta)$ and $\lim\limits_{h \to 0} \epsilon_1(h) = 0$, as desired.
+        
+        \medskip
+        
+        $(ii) \Rightarrow (iii)$ : By $(ii)$, we have the existence of $\delta>0, \alpha \in \mathbb{R}$ and the function $\epsilon_1$. We have
+        \[
+            \lim_{h \to 0} \frac{\abs{f(c+h) - f(c) - \alpha h}}{\abs{h}} = \lim_{h \to 0} \abs{\epsilon_1(h)} = 0
+        \]
+        
+        \medskip
+        
+        $(iii) \Rightarrow (i)$ : By $(iii)$, we have the existence of some $\alpha \in \mathbb{R}$ such that
+        \[
+            \lim_{h \to 0} \; \frac{\abs{f(c+h) - f(c) - \alpha h}}{\abs{h}} = 0
+        \]
+        Now, 
+        \[
+            \lim_{h \to 0} \; \abs{\frac{f(c+h) - f(c)}{h} - \alpha} = 0 \implies \lim_{h \to 0} \; \frac{f(c+h) - f(c)}{h} = \alpha
+        \]
+        Thus, $f$ is differentiable at $c$, as desired.
+        \medskip
+        
+        Since we have shown $(i) \Rightarrow (ii)$, $(ii) \Rightarrow (iii)$ and $(iii) \Rightarrow (i)$, we get that the three statements are thus equivalent.
+    \end{soln}
+    
+    \item[10] Show that any continuous function $f \colon [0,1] \rightarrow [0,1]$ has a fixed point. \textcolor{blue}{$x$ is said to be a fixed point of $f$ if $f(x) = x$}
+    \begin{soln}
+        Consider the function $g(x) = f(x) - x$. A fixed point of $f$ is then a root of $g$. Note that $g$ is continuous. Since $0 \leq f(x) \leq 1$ for all $x \in [0,1]$, we have
+        \[
+            g(0) = f(0) \implies g(0) \geq 0
+        \]
+        and
+        \[
+            g(1) = f(1) - 1 \implies g(1) \leq 0
+        \]
+        First consider the case that at least one of the two equalities hold. That is, either $g(0) = 0$ or $g(1) = 0$ or both. In either of the three cases, we have at least one fixed point ($0$ or $1$ or both, respectively). Now, consider that $g(0) > 0$ and $g(1) < 0$. Since $g$ is continuous, we can appeal to Intermediate Value Theorem. By IVT, there exists some $x_0 \in (0,1)$ such that $g(x_0) = 0$. This point $x_0$ is also a fixed point of $f$. Thus, we have shown that any continuous function mapping the unit interval to itself has a fixed point, as desired.
+    \end{soln}
+    
+    \newpage
+    
+    \textbf{Sheet 2.}
+    
+    \item[3] Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$. If $f(a)$ and $f(b)$ are of different signs and $f^{\prime}(x) \neq 0$ for all $x \in (a,b)$, then show that there is a unique $x_0 \in (a,b)$ such that $f(x_0) = 0$. 
+    
+    \begin{soln}
+        Since $f(a)$ and $f(b)$ are of opposite signs and $f$ is continuous, we know that there exists \textbf{at least} one $x_0 \in (a,b)$ such that $f(x_0) = 0$ (by IVP). Now, assume that there was some $y_0 (\neq x_0)$ in $(a,b)$ such that $f(y_0) = 0$. We now have $f(x_0) = f(y_0)$. By Rolle's Theorem, there must exist some $c \in (x_0, y_0)$ such that $f^{\prime}(c) = 0$. Since this $c$ also lies in $(a,b)$, we arrive at a contradiction. Hence, there is a unique $x_0$ in $(a,b)$ such that $f(x_0) = 0$, as desired.
+    \end{soln}
+    
+    \item[5] Use the MVT to show that $\abs{\sin(a) - \sin(b)} \leq \abs{a-b}$ for all $a,b \in \mathbb{R}$. 
+    \begin{soln}
+        We will break this problem into two cases. First, consider $a = b$. The inequality is trivially satisfied in this case. 
+        Next, consider $a \neq b$. Define $f(x) = \sin(x)$. By MVT, there exists some $c$ between $a$ and $b$ such that
+        \[
+            f^{\prime}(c) = \frac{f(a) - f(b)}{a-b}
+        \]
+        Since $f^{\prime} = \cos$, we take modulus on both sides to obtain
+        \[
+            \abs{\frac{\sin a - \sin b}{a - b}} = \abs{\cos c} \leq 1
+        \]  
+        Rearranging, we get
+        \[
+            \abs{\sin a - \sin b} \leq \abs{a - b}
+        \]
+        for all $a,b \in \mathbb{R}$, as desired.
+    \end{soln}
 \end{enumerate}
 
 \end{document}
