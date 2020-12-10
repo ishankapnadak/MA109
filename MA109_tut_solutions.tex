@@ -17,6 +17,8 @@
 \setlength\parindent{0pt}
 \usepackage{parskip}
 
+\def\D{\mathrm{d}}
+
 \usepackage[framemethod=tikz]{mdframed}
 \mdfdefinestyle{theoremstyle}{%
 	% linecolor=gray,linewidth=1pt,%
@@ -431,6 +433,262 @@
             \abs{\sin a - \sin b} \leq \abs{a - b}
         \]
         for all $a,b \in \mathbb{R}$, as desired.
+    \end{soln}
+\end{enumerate}
+
+\newpage\section{Week 3}
+\begin{center}
+	9th December, 2020
+\end{center}
+\textbf{Sheet 2.}
+
+\begin{enumerate}[leftmargin=*]
+    \itemsep0.5em
+    \item[8] In each case, find a function $f$ that satisfies all the given conditions, or else show that no such function exists.
+    \begin{enumerate}
+        \item[(ii)] $f^{\prime \prime}(x) \geq 0$ for all $x \in \mathbb{R}$, $f^{\prime}(0) = 1$, $f^{\prime}(1) = 2$.
+        \item[(iii)] $f^{\prime\prime}(x) \geq 0$ for all $x \in \mathbb{R}$, $f^{\prime}(0) = 1$, $f(x) \leq 100$ for all $x>0$.
+    \end{enumerate}
+    
+    \medskip
+    
+    \begin{soln}$ $\par\nobreak\ignorespaces
+        \begin{enumerate}[leftmargin=*]
+            \item[(ii)] Possible. Verify that $f \colon \mathbb{R} \rightarrow \mathbb{R}$ with $f(x) \coloneqq x + \ddfrac{x^2}{2}$ is one such function.
+            
+            \item[(iii)] Not possible. Assume that it was indeed possible to find such a function $f$. Then, we are given that $f^{\prime \prime}$ exists everywhere. Thus, $f^{\prime}$ is continuous and differentiable everywhere. As $f^{\prime \prime}$ is non-negative, $f^{\prime}$ must be increasing everywhere. Since $f^{\prime}(0) = 1$, we have that $f^{\prime}(c) \geq 1$ for all $c>0$.
+            
+            Let $x \in (0,\infty)$. By MVT, there exists $c \in (0,x)$ such that \[
+                f^{\prime}(c) = \frac{f(x) - f(0)}{x - 0}
+            \]
+            Since $c>0$, we have $f^{\prime}(c) \geq 1$ as shown above. Thus, $f(x) - f(0) \geq x$ for all $x > 0$. However, consider $x_0 \coloneqq \max\left(101-f(0), 1\right)$. Clearly, $x_0 > 0$ (as it is $\geq 1$). Also, $f(x_0) > 100$, which contradicts the condition that $f(x) \leq 100$ for all $x>0$. Hence, no such $f$ can exist.
+        \end{enumerate}
+    \end{soln}
+    
+    \newpage
+    
+    \item[10 (i)] Sketch the following curves after locating intervals of increase/decrease, intervals of concavity upward/downward, points of local minima/maxima, points of inflection and \textcolor{blue}{asymptotes}. How many times and approximately where does the curve cross the x-axis?
+    \[
+        y = 2x^3 + 2x^2 - 2x - 1
+    \]
+    
+    \begin{soln}
+        We are given 
+        \[
+            f(x) = 2x^3 + 2x^2 - 2x - 1
+        \]  
+        On differentiating, we get
+        \[
+            f^{\prime}(x) = 6x^2 + 4x - 2 = 2(x+1)(3x-1)
+        \]
+        Thus, $f^{\prime} > 0$ in $(-\infty, -1) \cup (\frac{1}{3}, \infty)$ and $f$ is strictly increasing here. $f^{\prime} < 0$ in $(-1, \frac{1}{3})$ and $f$ is strictly decreasing here. Thus, $f$ has a local maximum at $-1$ and a local minimum at $\frac{1}{3}$. Differentiating again, we see that
+        \[
+            f^{\prime\prime}(x) = 12x + 4
+        \]
+        Thus, $f$ is convex in $(-\frac{1}{3}, \infty)$ and concave in $(-\infty, -\frac{1}{3})$, with a point of inflection at $-\frac{1}{3}$. A curve for $f$ can be sketched as follows
+        
+        \begin{figure}[!h]
+    		\centering
+    		\begin{tikzpicture}[scale=3.2]
+    			\draw[step=0.5cm,gray,very thin] (-1.6,-1.6) grid (1.1,1.1);
+    			\draw[thick,->] (0,0) -- (1,0);
+    			\draw[thick,->] (0,0) -- (0, 1);
+    			\draw[thick,->] (0,0) -- (-1.5,0);
+    			\draw[thick,->] (0,0) -- (0,-1.5);
+    			\draw[thin,-,red] (-1,1) -- (-1,-1.5);
+    			\draw[thin,-,red] (0.333,1) -- (0.333,-1.5);
+    			\draw[thin,-,blue] (-0.333,1) -- (-0.333,-1.5);
+    			\node[] at (1.1, 0) {\tiny $x$};
+    			\node[] at (0, 1.1) {\tiny $f(x)$};
+    			\foreach \x in {-1.5,-1,-0.5,0,0.5, 1}
+       \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {\tiny $\x$};
+    \foreach \y in {-1.5,-1,-0.5,0,0.5,1}
+        \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {\tiny $\y$};
+    
+        \draw[variable=\t,domain=-1.4:0.9,samples=500] plot ({\t},{2*\t*\t*\t + 2*\t*\t - 2*\t - 1});
+    
+    		\end{tikzpicture}
+	\end{figure}
+    \end{soln}
+    
+    \newpage
+    
+    \item[11] Sketch a continuous function having all the following properties :
+    \begin{description}
+        \itemsep0.05em
+        \item $f(-2)=8, f(0)=4, f(2)=0; f^{\prime}(-2) = f^{\prime}(2) = 0;$
+        \item $f^{\prime}(x)>0$ for $\abs{x}>2$, $f^{\prime}(x)<0$ for $\abs{x} < 2$;
+        \item $f^{\prime\prime}(x) < 0$ for $x<0$, $f^{\prime\prime}(x)>0$ for $x>0$.
+    \end{description}
+    
+    \begin{soln}
+        $f^{\prime} > 0$ in $(-\infty, -2) \cup (2, \infty)$ and thus $f$ is strictly increasing here. $f^{\prime} < 0$ in $(-2, 2)$ and thus $f$ is strictly decreasing here. Thus, $f$ has a local maximum at $-2$ and a local minimum at $-2$. The function values at these points are $8$ and $0$ respectively. Also, $f$ is convex in $(0, \infty)$ and concave in $(-\infty, 0)$ with an inflection point at $0$. Putting all these together, we can sketch a curve for $f$ as:
+        
+        \begin{figure}[!h]
+		\centering
+		\begin{tikzpicture}[scale = 1.25]
+			\draw[step=1cm,gray,very thin] (-4.1,-1.1) grid (4.1,8.1);
+			\draw[thick,->] (0,0) -- (4,0);
+			\draw[thick,->] (0,0) -- (0, 8);
+			\draw[thick,->] (0,0) -- (-4,0);
+			\draw[thin,-,red] (-2,-1) -- (-2,8);
+			\draw[thin,-,red] (2,-1) -- (2,8);
+			\draw[thin,-,blue] (0,-1) -- (0,8);
+			\node[] at (4.2, 0) {\tiny $x$};
+			\node[] at (0, 8.2) {\tiny $f(x)$};
+			\foreach \x in {-3, ..., 3}
+   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {\tiny $\x$};
+\foreach \y in {1, ...,7}
+    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {\tiny $\y$};
+
+    \draw[variable=\t,domain=-3.9:3.9,samples=500] plot ({\t},{0.25*\t*\t*\t - 3*\t + 4});
+
+		\end{tikzpicture}
+	\end{figure}
+    \end{soln}
+    
+    \newpage
+    
+    \textbf{Sheet 3.}
+    
+    \item[1 (ii)] Write down the Taylor expansion of $\arctan(x)$ around the point $0$. Also write a precise remainder term $R_n(x)$.
+    
+    \begin{soln}
+        Let $f$ denote the arctangent function. Let $g$ denote its derivative
+        \[
+            g(x) = f^{\prime}(x) = \frac{1}{1+x^2}
+        \]
+        For $\abs{x} < 1$, we can expand the latter as a geometric series. Thus, we have
+        \[
+            g(x) = 1 - x^2 + x^4 - x^6 + \ldots = \sum_{k=0}^{\infty} (-1)^k x^{2k}
+        \]
+        for $\abs{x} < 1$. Let us now evaluate the $n^{\text{th}}$ derivative of $f$ at $x=0$. For $n \geq 1$, we have
+        \[
+            f^{(n)} = g^{(n-1)}
+        \]
+        where $f^{(r)}$ and $g^{(r)}$ denote the $r^{\text{th}}$ derivatives of $f$ and $g$ respectively. To evaluate the derivatives of $g$, we will consider two cases. First, we will evaluate all odd derivatives (derivatives of the order $2n-1$). On differentiating $g$, $r$ times, we will be left with a power series where the powers of $x$ are of the form $(2k-r)$ for $k \in \mathbb{N}\cup\{0\}$. When $r$ is odd, no exponent of $x$ vanishes. As a result, all the terms of the power series vanish when we plug in $x=0$. Thus, all odd derivatives of $g$ vanish at $0$. I leave it to you to compute the even order derivatives at $x=0$. The derivatives of $g$ at $0$ are then given by
+        \[
+            g^{(2n-1)}(0) = 0, \quad g^{(2n)}(0) = (-1)^n \cdot (2n)!
+        \]
+        for $n \geq 1$. Now, we have
+        \[
+            f^{2n}(0) = g^{(2n-1)}(0) = 0
+        \]
+        and
+        \[
+            f^{(2n-1)}(0) = g^{(2n-2)}(0) = (-1)^{n-1} \cdot (2n-2)!
+        \]
+        for $n \geq 1$. Let us now compute the $n^{\text{th}}$ Taylor polynomial $T_n(x)$ of $f$ at $0$. Note that $f(0)$ is $0$. Define $M \coloneqq \left\lfloor \left( \frac{n+1}{2} \right)  \right\rfloor$. We then have
+        \[
+            T_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(0)}{k!} x^k
+        \]
+        where $f^{(0)} = f$. With a bit of manipulation, we can write 
+        \[
+            T_n(x) = \sum_{k=1}^{M} \frac{(-1)^{k-1} \cdot (2k-2)!}{(2k-1)!} \cdot x^{2k-1}
+        \]  
+        Thus, the $n^{\text{th}}$ Taylor polynomial for $\arctan$ at $0$ is given by
+        \[
+            T_n(x) = \sum_{k=1}^{M} \frac{(-1)^k}{2k-1} x^{2k-1} \quad , \quad M = \left\lfloor \left( \frac{n+1}{2} \right) \right\rfloor
+        \]
+        
+        Writing it out in a neater way, we have
+        \[
+            T_{2n-1}(x) = x - \frac{x^3}{3} + \ldots + \frac{(-1)^{n-1}}{2n-1} x^{2n-1} 
+        \]
+        and 
+        \[
+            T_{2n}(x) = T_{2n-1}(x)
+        \]
+        
+        The remainder term is then just the difference of the arctangent function at $x$ and its Taylor polynomial. More precisely, we have
+        \[
+            R_n(x) = \arctan(x) - \sum_{k=0}^{M} \frac{(-1)^k}{2k-1} x^{2k-1}
+        \]
+        with $M$ defined as previously. Let us now calculate the remainder term $R_{2n-1}(x)$ more explicitly. We have
+        \[
+            \arctan^{\prime} = \textcolor{cyan}{1 - x^2 + x^4 + \ldots + (-1)^{n-1} x^{2n-2}} + (-1)^n x^{2n} \left[1 - x^2 + x^4 - \ldots \right]
+        \]
+        \[
+            \therefore \arctan^{\prime} = \textcolor{cyan}{1 - x^2 + x^4 + (-1)^{n-1} x^{2n-2}} + (-1)^{n} \frac{x^{2n}}{1+x^2}
+        \]
+        On integrating both sides from $0$ to $x$, the cyan-coloured term just becomes $T_{2n-1}(x)$. (Verify!) Thus, we have
+        \[
+            \arctan(x) = T_{2n-1}(x) + (-1)^n \int_{0}^{x} \frac{t^{2n}}{1+t^2} \, \D t
+        \]
+        Thus, 
+        \[
+            R_{2n-1}(x) = (-1)^n \int_{0}^{x} \frac{t^{2n}}{1+t^2} \, \D t
+        \]
+        and 
+        \[
+            R_{2n}(x) = R_{2n-1}(x)
+        \]
+    \end{soln}
+    
+    \newpage
+    
+    \item[2] Write down the Taylor series of the polynomial $x^3 - 3x^2 + 3x - 1$ about the point $1$.
+    \begin{soln}
+        The Taylor series is just $(x-1)^3$.
+    \end{soln}
+    
+    \item[4] Consider the series $\sum\limits_{k=0}^{\infty} \ddfrac{x^k}{k!}$ for a fixed $x$. Prove that it converges as follows. Choose $N > 2\textcolor{blue}{\abs{x}}$. We see that for $n > N$, 
+    \[
+        \textcolor{blue}{\abs{\frac{x^{n+1}}{(n+1)!}} < \frac{1}{2} \cdot \abs{\frac{x^n}{n!}}}
+    \]
+    It should now be relatively easy to show that the given series is Cauchy, and hence (by the completeness of $\mathbb{R}$) is convergent.
+    
+    \begin{soln}
+        Let the partial sums of the series be denoted as $S_m(x)$. That is,
+        \[
+            S_m(x) \coloneqq \sum_{k=0}^{m} \frac{x^k}{k!}
+        \]
+        We wish to show that the difference $\abs{S_m(x) - S_n(x)}$ can be made arbitrarily small whenever $m$ and $n$ are sufficiently large. Assume that $m>n>N$. We see that
+        \[
+            \abs{S_m(x) - S_n(x)} = \abs{\sum_{k=n+1}^{m}\frac{x^k}{k!}} \leq \abs{\frac{x^n}{n!}} \left( \frac{1}{2} + \frac{1}{4} + \ldots + \frac{1}{2^{m-n}} \right) \leq \abs{\frac{x^n}{n!}} \textcolor{blue}{< \abs{\frac{x^N}{N!}}}
+        \]
+        Now for any $\epsilon>0$, we can pick $\textcolor{blue}{N}$ large enough such that
+        \[
+            \abs{\frac{x^N}{N!}} < \epsilon
+        \]
+        This is possible because the sequence
+        \[
+            a_n = \frac{\abs{x}^n}{n!}
+        \]
+        is convergent (it is eventually decreasing and bounded below) and its limit is $0$. Thus, for all $m>n>N$, we have
+        \[
+            \abs{S_m(x) - S_n(x)} < \epsilon
+        \]
+        Hence, the given series is Cauchy and thus convergent.
+        
+        (\underline{Remark}: During the tutorial session, I had showed that the term $\abs{S_m(x) - S_n(x)}$ can be made arbitrarily small by picking $\textcolor{blue}{n}$ large enough. However, this is incorrect! We want to show that the term is smaller than $\epsilon$ for any $n,m$ greater than $N$. So really we have to make $\textcolor{blue}{N}$ large enough and conclude. This is what I have now done.)
+    \end{soln}
+    
+    \newpage
+    
+    \item[5] Using Taylor series, write down a series for the integral
+    \[
+        \int \frac{e^x}{x} \, \D x
+    \]
+    
+    \begin{soln}
+        We will assume that a Taylor series can be integrated term by term and then proceed. Recall that the Taylor series for $e^x$ is given by
+        \[
+            e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}
+        \]
+        We have
+        \begin{align*}
+            \int \frac{e^x}{x} \, \D x &= \int \left( \frac{1}{x} + \sum_{k=1}^{\infty} \frac{x^{k-1}}{k!} \right) \, \D x \\
+            &= \int \frac{1}{x} \, \D x + \int \left( \sum_{k=1}^{\infty} \frac{x^{k-1}}{k!} \right) \, \D x
+        \end{align*}
+        Since the latter term is a Taylor series, we can integrate it term by term to obtain
+        \[
+             \int \frac{e^x}{x} \, \D x = \log x + \sum_{k=1}^{\infty} \left( \int \frac{x^{k-1}}{k!} \, \D x \right)
+        \]
+        Thus, a series representation of the integral is given by
+        \[
+            \int \frac{e^x}{x} \, \D x = \log x + \sum_{k=1}^{\infty} \frac{x^k}{k \cdot k!}
+        \]
     \end{soln}
 \end{enumerate}
 
