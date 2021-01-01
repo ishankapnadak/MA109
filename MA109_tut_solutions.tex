@@ -20,6 +20,8 @@
 \usepackage{parskip}
 
 \def\D{\mathrm{d}}
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{\bfseries #1}}
+\renewcommand{\arraystretch}{1}
 
 \usepackage[framemethod=tikz]{mdframed}
 \mdfdefinestyle{theoremstyle}{%
@@ -109,7 +111,7 @@
     \itemsep0.5em
     \item[2 (iv)] $\displaystyle\lim_{n\to \infty}(n)^{1/n}.$
     \begin{soln}
-        We will utilise the fact that $n^{1/n} \geq 1$ for all $n \in \mathbb{N}$. (Why is this true?) We define $h_n \coloneqq n^{1/n} - 1$. Then, $h_n \geq 0$ for all $n \in \mathbb{N}$. For $n\geq2$, we have
+        We will utilise the fact that $n^{1/n} \geq 1$ for all $n \in \mathbb{N}$. (Why is this true?) We define $h_n \vcentcolon= n^{1/n} - 1$. Then, $h_n \geq 0$ for all $n \in \mathbb{N}$. For $n\geq2$, we have
         \[
             n = (1+h_n)^n \geq 1 + \binom{n}{1} h_n + \binom{n}{2} h_n^2 > \binom{n}{2} h_n^2 = \frac{n(n-1)}{2} h_n^2
         \]
@@ -126,14 +128,14 @@
     
     \newpage
     
-    \item[3 (ii)] Prove that the sequence $a_n \coloneqq \left\{ (-1)^n \left( \ddfrac{1}{2} - \ddfrac{1}{n} \right) \right\}_{n \geq 1}$ is not convergent.
+    \item[3 (ii)] Prove that the sequence $a_n \vcentcolon= \left\{ (-1)^n \left( \ddfrac{1}{2} - \ddfrac{1}{n} \right) \right\}_{n \geq 1}$ is not convergent.
     
     \begin{soln}
-        We will prove this result by contradiction. First, observe that the sequence $b_n \coloneqq \ddfrac{(-1)^n}{n}$ is convergent and its limit is $0$. This is true because its absolute value behaves the same way as $\ddfrac{1}{n}$ (try proving this with the $\epsilon$-$N$ definition to work out the details). We also know that the sequence $\{(-1)^n\}_{n \geq 1}$ is not convergent. (Why?) Now, let us assume that the given sequence $(a_n)$ converges. We have
+        We will prove this result by contradiction. First, observe that the sequence $b_n \vcentcolon= \ddfrac{(-1)^n}{n}$ is convergent and its limit is $0$. This is true because its absolute value behaves the same way as $\ddfrac{1}{n}$ (try proving this with the $\epsilon$-$N$ definition to work out the details). We also know that the sequence $\{(-1)^n\}_{n \geq 1}$ is not convergent. (Why?) Now, let us assume that the given sequence $(a_n)$ converges. We have
         \[
-            a_n \coloneqq \left\{ (-1)^n \left( \ddfrac{1}{2} - \ddfrac{1}{n} \right) \right\} = \frac{(-1)^n}{2} - \frac{(-1)^n}{n}
+            a_n \vcentcolon= \left\{ (-1)^n \left( \ddfrac{1}{2} - \ddfrac{1}{n} \right) \right\} = \frac{(-1)^n}{2} - \frac{(-1)^n}{n}
         \]
-        We also know that the the sum of two convergent sequences is convergent. Since $a_n$ is assumed to be convergent and $b_n$ is convergent, we have that $c_n \coloneqq a_n + b_n = \ddfrac{(-1)^n}{2}$ must also converge. However, the convergence of $c_n$ implies that the sequence $(-1)^n$ also converges. Hence, we arrive at a contradiction and thus, the sequence $(a_n)$ is not convergent.
+        We also know that the the sum of two convergent sequences is convergent. Since $a_n$ is assumed to be convergent and $b_n$ is convergent, we have that $c_n \vcentcolon= a_n + b_n = \ddfrac{(-1)^n}{2}$ must also converge. However, the convergence of $c_n$ implies that the sequence $(-1)^n$ also converges. Hence, we arrive at a contradiction and thus, the sequence $(a_n)$ is not convergent.
         
     \end{soln}
     
@@ -189,12 +191,12 @@
     \end{enumerate}
     
     \begin{soln}
-        This is a relatively short question. Both the statements are \textbf{false}. Verify that $a_n \coloneqq 1$ and $b_n \coloneqq (-1)^n$ acts as a counterexample for both the statements.
+        This is a relatively short question. Both the statements are \textbf{false}. Verify that $a_n \vcentcolon= 1$ and $b_n \vcentcolon= (-1)^n$ acts as a counterexample for both the statements.
     \end{soln}
     
     \newpage
     
-    \item[11] Let $f,g \colon (a,b) \rightarrow \mathbb{R}$ be functions and suppose that $\lim\limits_{x \to c} f(x) = 0$ for $c \in [a,b]$. Prove or disprove the following statements. 
+    \item[11] Let $f,g \colon (a,b) \to \mathbb{R}$ be functions and suppose that $\lim\limits_{x \to c} f(x) = 0$ for $c \in [a,b]$. Prove or disprove the following statements. 
     \begin{enumerate}[label = (\roman*)]
         \item $\lim\limits_{x \to c} \left[ f(x) g(x) \right] = 0$.
         \item $\lim\limits_{x \to c} \left[ f(x) g(x) \right] = 0$ if $g$ is bounded.
@@ -203,7 +205,7 @@
     \begin{soln}
     
         \begin{enumerate}[label = (\roman*), labelwidth=!, labelindent=0pt]
-            \item This statement is \textbf{false}. As a counterexample, define $a=-1, b=1$ and $c=0$. Define $f,g \colon (-1,1) \rightarrow \mathbb{R}$ as
+            \item This statement is \textbf{false}. As a counterexample, define $a=-1, b=1$ and $c=0$. Define $f,g \colon (-1,1) \to \mathbb{R}$ as
             \[
                 f(x) = x \quad \text{ and } \quad g(x) = \begin{cases}
                     1 & \text{ if } x=0 \\
@@ -279,7 +281,7 @@
     
     \newpage 
     
-    \item[15] Let $f \colon \mathbb{R} \rightarrow \mathbb{R}$ be defined as follows. 
+    \item[15] Let $f \colon \mathbb{R} \to \mathbb{R}$ be defined as follows. 
     \[
         f(x) = \begin{cases}
             x^2 \sin\left( \ddfrac{1}{x} \right) & \text{ if } x \neq 0 \\
@@ -305,7 +307,7 @@
         \]
         Clearly, $f^{\prime}$ is continuous at all $x \neq 0$. All that remains is to check continuity of $f^{\prime}$ at $x=0$. It turns out that $f^{\prime}$ is in fact \textit{not} continuous at $x=0$. We will use the sequential criterion of continuity to prove this. Consider the sequence:
         \[
-            x_n \coloneqq \frac{1}{2n\pi}, \quad n \in \mathbb{N}
+            x_n \vcentcolon= \frac{1}{2n\pi}, \quad n \in \mathbb{N}
         \] Clearly, $x_n \to 0$ as $n \to \infty$. However, 
         \[
             f^{\prime}(x_n) = \cancel{\frac{2}{2n\pi} \cdot \sin\left( 2n\pi \right)} - \cos \left( 2n \pi \right) = -1
@@ -315,7 +317,7 @@
     
     \newpage 
     
-    \item[18] Let $f \colon \mathbb{R} \rightarrow \mathbb{R}$ satisfy
+    \item[18] Let $f \colon \mathbb{R} \to \mathbb{R}$ satisfy
     \[
         f(x+y) = f(x) \cdot f(y)  \; \text{ for all } x,y \in \mathbb{R}
     \]
@@ -343,10 +345,10 @@
     
     \textbf{Optional Exercises.}
     
-    \item[7] Let $f \colon (a,b) \rightarrow \mathbb{R}$ and $c \in (a,b)$. Show that the following statements are equivalent. 
+    \item[7] Let $f \colon (a,b) \to \mathbb{R}$ and $c \in (a,b)$. Show that the following statements are equivalent. 
     \begin{enumerate}[label = (\roman*)]
         \item $f$ is differentiable at $c$.
-        \item There exists $\delta>0$, \textcolor{blue}{$\alpha \in \mathbb{R}$} and a function $\epsilon_1 \colon (-\delta, \delta) \rightarrow \mathbb{R}$ such that $\lim\limits_{h \to 0} \epsilon_1(h) = 0$ and
+        \item There exists $\delta>0$, \textcolor{blue}{$\alpha \in \mathbb{R}$} and a function $\epsilon_1 \colon (-\delta, \delta) \to \mathbb{R}$ such that $\lim\limits_{h \to 0} \epsilon_1(h) = 0$ and
         \[
             f(c+h) = f(c) + \alpha h + h \epsilon_1(h)
         \]
@@ -357,10 +359,10 @@
         \]
     \end{enumerate}
     \begin{soln}
-        To show the equivalence of statements $(i)$-$(iii)$, we must show that every statement implies every other statement, that is, a total of $6$ implications. However, we can get away with just showing three implications. We will show that $(i) \Rightarrow (ii)$, $(ii) \Rightarrow (iii)$ and $(iii) \Rightarrow (i)$. This is sufficient to conclude the equivalence of the three statements. (Why?)
+        To show the equivalence of statements $(i)$-$(iii)$, we must show that every statement implies every other statement, that is, a total of $6$ implications. However, we can get away with just showing three implications. We will show that $(i) \to (ii)$, $(ii) \to (iii)$ and $(iii) \to (i)$. This is sufficient to conclude the equivalence of the three statements. (Why?)
         \medskip
         
-        $(i) \Rightarrow (ii)$ : Since we are given that $f$ is differentiable at $c$, $f^{\prime}(c)$ exists. We first pick $\delta \coloneqq \min\left\{c-a, b-c\right\}$. Clearly $\delta>0$ and $(c-\delta, c+\delta) \subset (a,b)$. Now, since $f$ is differentiable at $c$, $f^{\prime}(c)$ exists. Define $\alpha \coloneqq f^{\prime}(c)$ and 
+        $(i) \to (ii)$ : Since we are given that $f$ is differentiable at $c$, $f^{\prime}(c)$ exists. We first pick $\delta \vcentcolon= \min\left\{c-a, b-c\right\}$. Clearly $\delta>0$ and $(c-\delta, c+\delta) \subset (a,b)$. Now, since $f$ is differentiable at $c$, $f^{\prime}(c)$ exists. Define $\alpha \vcentcolon= f^{\prime}(c)$ and 
         \[
             \epsilon_1(h) = \begin{cases}
                 \ddfrac{f(c+h) - f(c) - \alpha h}{h} & \text{ if } h \neq 0 \\
@@ -375,14 +377,14 @@
         
         \medskip
         
-        $(ii) \Rightarrow (iii)$ : By $(ii)$, we have the existence of $\delta>0, \alpha \in \mathbb{R}$ and the function $\epsilon_1$. We have
+        $(ii) \to (iii)$ : By $(ii)$, we have the existence of $\delta>0, \alpha \in \mathbb{R}$ and the function $\epsilon_1$. We have
         \[
             \lim_{h \to 0} \frac{\abs{f(c+h) - f(c) - \alpha h}}{\abs{h}} = \lim_{h \to 0} \abs{\epsilon_1(h)} = 0
         \]
         
         \medskip
         
-        $(iii) \Rightarrow (i)$ : By $(iii)$, we have the existence of some $\alpha \in \mathbb{R}$ such that
+        $(iii) \to (i)$ : By $(iii)$, we have the existence of some $\alpha \in \mathbb{R}$ such that
         \[
             \lim_{h \to 0} \; \frac{\abs{f(c+h) - f(c) - \alpha h}}{\abs{h}} = 0
         \]
@@ -393,10 +395,10 @@
         Thus, $f$ is differentiable at $c$, as desired.
         \medskip
         
-        Since we have shown $(i) \Rightarrow (ii)$, $(ii) \Rightarrow (iii)$ and $(iii) \Rightarrow (i)$, we get that the three statements are thus equivalent.
+        Since we have shown $(i) \to (ii)$, $(ii) \to (iii)$ and $(iii) \to (i)$, we get that the three statements are thus equivalent.
     \end{soln}
     
-    \item[10] Show that any continuous function $f \colon [0,1] \rightarrow [0,1]$ has a fixed point. \textcolor{blue}{$x$ is said to be a fixed point of $f$ if $f(x) = x$}
+    \item[10] Show that any continuous function $f \colon [0,1] \to [0,1]$ has a fixed point. \textcolor{blue}{$x$ is said to be a fixed point of $f$ if $f(x) = x$}
     \begin{soln}
         Consider the function $g(x) = f(x) - x$. A fixed point of $f$ is then a root of $g$. Note that $g$ is continuous. Since $0 \leq f(x) \leq 1$ for all $x \in [0,1]$, we have
         \[
@@ -456,14 +458,14 @@
     
     \begin{soln}$ $\par\nobreak\ignorespaces
         \begin{enumerate}[leftmargin=*]
-            \item[(ii)] Possible. Verify that $f \colon \mathbb{R} \rightarrow \mathbb{R}$ with $f(x) \coloneqq x + \ddfrac{x^2}{2}$ is one such function.
+            \item[(ii)] Possible. Verify that $f \colon \mathbb{R} \to \mathbb{R}$ with $f(x) \vcentcolon= x + \ddfrac{x^2}{2}$ is one such function.
             
             \item[(iii)] Not possible. Assume that it was indeed possible to find such a function $f$. Then, we are given that $f^{\prime \prime}$ exists everywhere. Thus, $f^{\prime}$ is continuous and differentiable everywhere. As $f^{\prime \prime}$ is non-negative, $f^{\prime}$ must be increasing everywhere. Since $f^{\prime}(0) = 1$, we have that $f^{\prime}(c) \geq 1$ for all $c>0$.
             
             Let $x \in (0,\infty)$. By MVT, there exists $c \in (0,x)$ such that \[
                 f^{\prime}(c) = \frac{f(x) - f(0)}{x - 0}
             \]
-            Since $c>0$, we have $f^{\prime}(c) \geq 1$ as shown above. Thus, $f(x) - f(0) \geq x$ for all $x > 0$. However, consider $x_0 \coloneqq \max\left(101-f(0), 1\right)$. Clearly, $x_0 > 0$ (as it is $\geq 1$). Also, $f(x_0) > 100$, which contradicts the condition that $f(x) \leq 100$ for all $x>0$. Hence, no such $f$ can exist.
+            Since $c>0$, we have $f^{\prime}(c) \geq 1$ as shown above. Thus, $f(x) - f(0) \geq x$ for all $x > 0$. However, consider $x_0 \vcentcolon= \max\left(101-f(0), 1\right)$. Clearly, $x_0 > 0$ (as it is $\geq 1$). Also, $f(x_0) > 100$, which contradicts the condition that $f(x) \leq 100$ for all $x>0$. Hence, no such $f$ can exist.
         \end{enumerate}
     \end{soln}
     
@@ -584,7 +586,7 @@
         \[
             \textcolor{blue}{T_0(x) = f(0) = 0}
         \]  
-        Let us now compute the $n^{\text{th}}$ Taylor polynomial $T_n(x)$ of $f$ at $0$ \textcolor{blue}{for $n \geq 1$}. Define $M \coloneqq \left\lfloor \left( \frac{n+1}{2} \right)  \right\rfloor$.   \textcolor{blue}{ For $n \geq 1$}, we then have
+        Let us now compute the $n^{\text{th}}$ Taylor polynomial $T_n(x)$ of $f$ at $0$ \textcolor{blue}{for $n \geq 1$}. Define $M \vcentcolon= \left\lfloor \left( \frac{n+1}{2} \right)  \right\rfloor$.   \textcolor{blue}{ For $n \geq 1$}, we then have
         \[
             T_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(0)}{k!} x^k
         \]
@@ -668,7 +670,7 @@
         \]
         We also have
         \[
-            R_n(x) \coloneqq f(x) - P_n(x) = 0 \; \text{ for all } n \geq 3
+            R_n(x) \vcentcolon= f(x) - P_n(x) = 0 \; \text{ for all } n \geq 3
         \]
         Thus, $R_n(x) \to 0$ for \textbf{all} $x$. Thus, the Taylor series of the function about the point $1$ is simply given by $(x-1)^3$.
     \end{soln}
@@ -682,7 +684,7 @@
     \begin{soln}
         Let the partial sums of the series be denoted as $S_m(x)$. That is,
         \[
-            S_m(x) \coloneqq \sum_{k=0}^{m} \frac{x^k}{k!}
+            S_m(x) \vcentcolon= \sum_{k=0}^{m} \frac{x^k}{k!}
         \]
         We wish to show that the difference $\abs{S_m(x) - S_n(x)}$ can be made arbitrarily small whenever $m$ and $n$ are sufficiently large. Assume that $m>n>N$. We see that
         \[
@@ -741,7 +743,7 @@
 
 \begin{enumerate}[leftmargin=*]
     \itemsep0.5em
-    \item[2 (a)] Let $f \colon [a,b] \rightarrow \mathbb{R}$ be Riemann integrable and $f(x) \geq 0$ for all $x \in [a,b]$. Show that $\displaystyle\int_a^b f(x) \, \D x \geq 0$. Further, if $f$ is continuous and $\displaystyle\int_a^b f(x) \, \D x = 0$, show that $f(x) = 0$ for all $x \in [a,b]$.
+    \item[2 (a)] Let $f \colon [a,b] \to \mathbb{R}$ be Riemann integrable and $f(x) \geq 0$ for all $x \in [a,b]$. Show that $\displaystyle\int_a^b f(x) \, \D x \geq 0$. Further, if $f$ is continuous and $\displaystyle\int_a^b f(x) \, \D x = 0$, show that $f(x) = 0$ for all $x \in [a,b]$.
     
     \begin{soln}
         Let $P = \left\{ a=x_0 <  x_1 < \ldots < x_n = b \right\}$ denote a partition of $[a,b]$. Define $\Delta x_i = x_i - x_{i-1}$ for $1 \leq i \leq n$. Further, we define
@@ -860,11 +862,11 @@
     \begin{enumerate}[leftmargin=*]
     \item[(ii)]
     \begin{soln}
-        Consider $f \colon [0,1] \rightarrow \mathbb{R}$ defined as $f(x) \coloneqq \arctan(x)$. Then, we have
+        Consider $f \colon [0,1] \to \mathbb{R}$ defined as $f(x) \vcentcolon= \arctan(x)$. Then, we have
         \[
             f^{\prime}(x) = \frac{1}{1+x^2}
         \]
-        Since $f^{\prime}$ is continuous on $[0,1]$, it is Riemann integrable on $[0,1]$. Let $P_n \coloneqq \left\{ x_i = \frac{i}{n} \colon 0 \leq i \leq n \right\}$ be a tagged partition of $[0,1]$ for $n \in \mathbb{N}$ and let $T_n \coloneqq \left\{ t_i = \frac{i}{n} \colon 1 \leq i \leq n\right\}$ denote the tags of the partition. 
+        Since $f^{\prime}$ is continuous on $[0,1]$, it is Riemann integrable on $[0,1]$. Let $P_n \vcentcolon= \left\{ x_i = \frac{i}{n} \colon 0 \leq i \leq n \right\}$ be a tagged partition of $[0,1]$ for $n \in \mathbb{N}$ and let $T_n \vcentcolon= \left\{ t_i = \frac{i}{n} \colon 1 \leq i \leq n\right\}$ denote the tags of the partition. 
         
         \medskip
         
@@ -896,11 +898,11 @@
         \item[(iv)] 
         \begin{soln}
     
-        Consider $f : [0,1] \rightarrow \mathbb{R}$ defined as 
+        Consider $f : [0,1] \to \mathbb{R}$ defined as 
         \[
-            f(x) \coloneqq \frac{1}{\pi} \sin(\pi x) 
+            f(x) \vcentcolon= \frac{1}{\pi} \sin(\pi x) 
         \]
-        We then have $f^{\prime}(x) = \cos(\pi x)$. Since $f^{\prime}$ is continuous on $[0,1]$, it is Riemann integrable on $[0,1]$. Let $P_n \coloneqq \left\{ x_i = \frac{i}{n} \colon 0 \leq i \leq n \right\}$ be a tagged partition of $[0,1]$ for $n \in \mathbb{N}$ and let $T_n \coloneqq \left\{ t_i = \frac{i}{n} \colon 1 \leq i \leq n\right\}$ denote the tags of the partition. 
+        We then have $f^{\prime}(x) = \cos(\pi x)$. Since $f^{\prime}$ is continuous on $[0,1]$, it is Riemann integrable on $[0,1]$. Let $P_n \vcentcolon= \left\{ x_i = \frac{i}{n} \colon 0 \leq i \leq n \right\}$ be a tagged partition of $[0,1]$ for $n \in \mathbb{N}$ and let $T_n \vcentcolon= \left\{ t_i = \frac{i}{n} \colon 1 \leq i \leq n\right\}$ denote the tags of the partition. 
         
         \medskip
         
@@ -944,7 +946,7 @@
         \begin{lem*}
             Let $f \colon \mathbb{R} \to \mathbb{R}$ be continuous and let $v \colon \mathbb{R} \to \mathbb{R}$ be differentiable. Let $F \colon \mathbb{R} \to \mathbb{R}$ be defined as
             \[
-                F(x) \coloneqq \int_{0}^{v(x)} f(t) \, \D t
+                F(x) \vcentcolon= \int_{0}^{v(x)} f(t) \, \D t
             \]
             Then, 
             \[
@@ -955,7 +957,7 @@
         \begin{proof}
             First, we define $G \colon \mathbb{R} \to \mathbb{R}$ as 
             \[
-                G(x) \coloneqq \int_0^x f(t) \, \D t
+                G(x) \vcentcolon= \int_0^x f(t) \, \D t
             \]
             Then, $G^{\prime} = f$ by the Fundamental Theorem of Calculus (Part $1$). Now,
             \[
@@ -982,7 +984,7 @@
     
     \newpage
     
-    \item[6] Let $f \colon \mathbb{R} \rightarrow \mathbb{R}$ be continuous and $\lambda \in \mathbb{R}, \lambda \neq 0$. For $x \in \mathbb{R}$, let
+    \item[6] Let $f \colon \mathbb{R} \to \mathbb{R}$ be continuous and $\lambda \in \mathbb{R}, \lambda \neq 0$. For $x \in \mathbb{R}$, let
     \[
         g(x) = \frac{1}{\lambda} \int_0^x f(t) \sin{\lambda(x-t)} \, \D t
     \]
@@ -1014,6 +1016,470 @@
         It thus follows that $g^{\prime\prime}(x) + \lambda^2 g(x) = f(x)$ for all $x \in \mathbb{R}$, as desired.
     \end{soln}
 \end{enumerate}
+
+\newpage
+\section{Week 5}
+\begin{center}
+    23rd December, 2020
+\end{center}
+
+\textbf{Sheet 5}
+
+\begin{enumerate}[leftmargin=*]
+    \itemsep0.5em
+    \item[2] Describe the level curves and contour lines for the following functions corresponding to the values $c=-3,-2,-1,0,1,2,3,4$.
+    \begin{multicols}{2}
+        \begin{enumerate}[leftmargin=*]
+            \item[(ii)] $f(x,y) = x^2 + y^2$
+            \item[(iii)] $f(x,y) = xy$
+        \end{enumerate}
+    \end{multicols}
+    
+    \begin{enumerate}[leftmargin=*]
+        \item[(ii)] \begin{soln} \textcolor{blue}{($x^2 + y^2 = c$)}
+        
+            For $c=-3,-2,-1$, level curves and contour lines are empty sets. For $c=0$, the level curve is the point $(0,0) \in \mathbb{R}^2$ and the contour line is the point $(0,0,0) \in \mathbb{R}^3$. For any $c \in \{1,2,3,4\}$, the level curve is a circle in the $xy$ plane, centered at the origin, with radius $\sqrt{c}$. More precisely, the level curve is the set $L = \left\{ (x,y) \in \mathbb{R}^2 \mid x^2 + y^2 = c \right\}$. The contour line is a cross-section in $\mathbb{R}^3$ of the paraboloid $z = x^2 + y^2$ by the plane $z=c$. That is, a circle in the plane $z=c$, centered at $(0,0,c)$ and with radius $\sqrt{c}$. More precisely, the contour line is the set $L \times \{c\}$.
+        \end{soln}
+        
+        \item[(iii)] \begin{soln}\textcolor{blue}{($xy=c$)}
+        
+            %For $c=-3,-2,-1$, the level curves are rectangular hyperbolas $xy=c$ with branches in the second and fourth quadrant. For $c=1,2,3,4$, the level curves are rectangular hyperbolas $xy=c$ with branches in the first and third quadrant. For $c=0$, the level curve is the union of the $x$ and $y$ axes in the $xy$-plane, while the contour line is the union of the $x$ and $y$ axes in the $xyz$-space. For non-zero $c$, the contour lines are cross-sections of the hyperboloid $z=xy$ by the plane $z=c$. That is, these are rectangular hyperbolas in the plane $z=c$.
+            
+            For $c = 0$, the level set is the union of the $x$ and $y$ axes in the $xy$-plane. Precisely, this is the set $L = \left\{ (x,y) \in \mathbb{R}^2 \mid  x = 0 \text{ or } y =0\right\}$. The contour line corresponding to $c=0$ is the union of the $x$ and $y$ axes in the $xyz$-space. This is the set $L \times \{0\}$. For any non-zero $c$, the level curve is the rectangular hyperbola $xy = c$ and the contour line is the cross-section of the hyperboloid $z = xy$ by the plane $z=c$. More precisely, the level curve is the set $L = \left\{ (x,y) \in \mathbb{R}^2 \mid xy = c \right\}$ and the contour line is the set $L \times \{c\}$. For negative $c$, the level curve (and the contour line) has branches in the second and fourth quadrant while for positive $c$, the level curve (and the contour line) has branches in the first and third quadrants.
+        \end{soln}
+    \end{enumerate}
+    
+    \newpage
+    
+    \item[4] Suppose $f,g \colon \mathbb{R} \to \mathbb{R}$ are continuous functions. Show that each of the following functions of $(x,y) \in \mathbb{R}^2$ are continuous. 
+    
+    \begin{multicols}{2}
+        \begin{enumerate}[leftmargin=*]
+            \item[(i)] $f(x) \pm g(y)$
+            \item[(ii)] $f(x) g(y)$
+        \end{enumerate}
+    \end{multicols}
+    \begin{multicols}{2}
+        \begin{enumerate}[leftmargin=*]
+            \item[(iii)] $\max\left\{ f(x), g(y) \right\}$
+            \item[(iv)] $\min\left\{ f(x), g(y) \right\}$
+        \end{enumerate}
+    \end{multicols}
+    
+    \begin{soln}
+        We will use sequential criterion of continuity. Just to recall:
+        
+        \begin{thm*}[Sequential Criterion]
+            Let $f \colon \mathbb{R}^2 \to \mathbb{R}$ be a function. Then, $f$ is continuous at $(x_0, y_0)$ if and only if for every sequence $\left( (x_n, y_n) \right)$ converging to $(x_0, y_0)$, we have 
+            \[
+                \lim_{n \to \infty} f\left( x_n, y_n \right) = f(x_0, y_0)
+            \]
+        \end{thm*}
+        
+        Let $(x_0, y_0)$ be an arbitrary point of $\mathbb{R}^2$. Let $(x_n, y_n)$ be an arbitrary sequence in $\mathbb{R}^2$ such that $(x_n, y_n) \to (x_0, y_0)$. We then have $x_n \to x_0$ and $y_n \to y_0$. Since $f$ and $g$ are continuous, it follows that $f(x_n) \to f(x_0)$ and $g(y_n) \to g(y_0)$. For (i) and (ii), note that we can now use algebra of limits to conclude that the given functions are indeed continuous. 
+        
+        \medskip
+        
+        For (iii) and (iv), note the following:
+        \[
+            \max\left\{ f(x), g(y) \right\} = \frac{f(x) + g(y)}{2} + \frac{\abs{f(x) - g(y)}}{2}
+        \]
+        \[
+            \min\left\{ f(x), g(y) \right\} = \frac{f(x) + g(y)}{2} - \frac{\abs{f(x) - g(y)}}{2}
+        \]
+        Again, consider $\left( (x_n, y_n) \right)$ to be an arbitrary sequence converging to $(x_0, y_0)$. We then have $x_n \to x_0$ and $y_n \to y_0$. From the continuity of $f,g$ it follows that $f(x_n) \to f(x_0)$ and $g(y_n) \to g(y)$. Thus, we have
+        \[
+            f(x_n) + g(y_n) \to f(x_0) + g(y_0)
+        \]
+        Since the modulus function is continuous, we also have
+        \[
+            \abs{f(x_n) + g(y_n)} \to \abs{f(x_0) + g(y_0)}
+        \]
+        It then follows that
+        \[
+            \frac{f(x_n) + g(y_n)}{2} + \frac{\abs{f(x_n) - g(y_n)}}{2} \longrightarrow \frac{f(x_0) + g(y_0)}{2} + \frac{\abs{f(x_0) - g(y_0)}}{2}
+        \]
+        which can be rewritten as
+        \[
+            \max\left\{ f(x_n), g(y_n) \right\} \to \max\left\{ f(x_0), g(y_0) \right\}
+        \]
+        concluding the proof for (iii). Similarly, the proof for (iv) follows.
+        
+        \medskip
+        
+        Since the point $(x_0, y_0)$ was arbitrary, it follows that the given functions are continuous on all of $\mathbb{R}^2$.
+    \end{soln}
+    
+    \newpage
+    
+    \item[6 (ii)] Examine the following functions for the existence of partial derivatives at $(0,0)$. The expressions below give the value for $(x,y) \neq (0,0)$. At $(0,0)$, the value should be taken to be zero.
+    \[
+        \frac{\sin^2\left( x+y \right)}{\abs{x} + \abs{y}}
+    \]
+    
+    \begin{soln}
+        Let $f \colon \mathbb{R}^2 \to \mathbb{R}$ be the function given. That is, 
+        \[
+            f(x,y) = \begin{cases}
+                \dfrac{\sin^2\left( x+y \right)}{\abs{x} + \abs{y}} & (x,y) \neq (0,0) \\
+                0 & (x,y) = (0,0)
+            \end{cases}
+        \]
+        
+        For $h \neq 0$, we have
+        \[
+            \frac{f(h,0) - f(0,0)}{h}
+            = \left( \frac{\sin^2{h}}{h\abs{h}} \right)
+        \]
+        
+        It is easy to show that the above limit (as $h$ goes to $0$) does not exist (Take strictly positive and strictly negative sequences converging to zero). Hence, we see that $\dfrac{\partial f}{\partial x_1}(0,0)$ does not exist. Similar arguments show that the second partial does not exist either.
+    \end{soln}
+    
+    \newpage
+    
+    \item[8] Let $f$ be defined as 
+    \[
+        f(x,y) = \begin{cases}
+            x \sin{\left( 1/x \right)} + y \sin{\left( 1/y \right)} & x \neq 0, y \neq 0 \\
+            x \sin{\left( 1/x \right)} & x \neq 0, y = 0 \\
+            y \sin{\left( 1/y \right)} & x=0, y \neq 0 \\
+            0 & x=0, y=0
+        \end{cases}
+    \]
+    Show that none of the partial derivatives of $f$ exist at $(0,0)$ although $f$ is continuous at $(0,0)$.
+    
+    \begin{soln}
+        Let us first show that the given function is continuous at $(0,0)$. Let $(x_n,y_n)$ be a sequence in $\mathbb{R}^2$ such that $(x_n, y_n) \to (0,0)$. This gives us that $x_n \to 0$ and $y_n \to 0$. Now, note that
+        \[
+            0 \leq \abs{f(x_n, y_n)} \leq \abs{x_n} + \abs{y_n}
+        \]
+        for all $(x_n, y_n) \in \mathbb{R}^2$. Since $(x_n, y_n) \to (0,0)$, we get that $f(x_n, y_n) \to 0 = f(0,0)$. Thus, the function is continuous at $(0,0)$.
+        
+        \medskip
+        
+        Let us now show that neither partial derivatives of $f$ at $(0,0)$ exist. For $h \neq 0$, we have
+        \[
+            \frac{f(h,0) - f(0,0)}{h} = \sin{\frac{1}{h}}
+        \]
+        The limit of the above expression as $h \to 0$, does not exist. Similar arguments show that the second partial derivative does not exist either.
+    \end{soln}
+    
+    \newpage
+    
+    \item[10] Let $f \colon \mathbb{R}^2 \to \mathbb{R}^2$ be defined as 
+    \[
+        f(x,y) = \begin{cases}
+            \frac{y}{\abs{y}} \sqrt{x^2 + y^2} & y \neq 0 \\
+            0 & y = 0
+        \end{cases}
+    \]
+    
+    Show that $f$ is continuous at $(0,0)$, $\nabla_{\underline{u}} f(0,0)$ exists for every \textcolor{blue}{unit} vector $\textbf{u}$ and yet, $f$ is not differentiable at $(0,0)$. 
+    
+    \begin{soln}
+        First, we will show that $f$ is indeed continuous at $(0,0)$. We will now use the $\epsilon$-$\delta$ condition (it's easier to work with in this case). Note that we have
+        \[
+            \abs{f(x,y) - f(0,0)} = \begin{cases}
+                \sqrt{x^2+y^2} & y \neq 0 \\
+                0 & y = 0
+            \end{cases}
+        \]
+        Thus, in general, we have
+        \[
+            \abs{f(x,y) - f(0,0)} \leq \sqrt{x^2 + y^2}
+        \]
+        Now, given any $\epsilon > 0$, setting $\delta \vcentcolon= \epsilon$ works.
+        
+        \medskip
+        
+        Let $\underline{u} = (u_1, u_2)$ be a unit vector in $\mathbb{R}^2$. If $u_2 \neq 0$, then for $t\neq 0$, we have
+        \begin{align*}
+            \frac{f(u_1 t, u_2t) - f(0,0)}{t} &= \frac{f(u_1t, 0) - 0}{t} \\
+            &= \frac{0-0}{t} = 0
+        \end{align*}
+        
+        For $u_2 \neq 0$ and $t \neq 0$, we have
+        \begin{align*}
+            \frac{f(u_1t, u_2t) - f(0,0)}{t} &= \frac{1}{t} \frac{u_2t}{\abs{u_2t}} \sqrt{\left( u_1^2 + u_2^2 \right) t} \\
+            &= \frac{1}{t} \frac{u_2t}{\abs{u_2t}} \abs{t} \\
+            &= \frac{u_2}{\abs{u_2}}
+        \end{align*}
+        
+        Thus, all directional derivatives exist and are given by
+        \[
+            \nabla_{\underline{u}} f(0,0) = \begin{cases}
+                0 & u_2 = 0 \\
+                \dfrac{u_2}{\abs{u_2}} & u_2 \neq 0
+            \end{cases}
+        \]
+        
+        Setting $\underline{u} = (1,0)$ and $(0,1)$ recovers the partial derivatives. We will now check if $f$ is differentiable.
+        
+        \medskip
+        
+        \emph{If} $f$ is differentiable at $(0,0)$ then its total derivative must be 
+        \[
+            Df(0,0) = \begin{bmatrix}
+                \dfrac{\partial f}{\partial x_1}(0,0) & \dfrac{\partial f}{\partial x_2}(0,0)
+            \end{bmatrix} = \begin{bmatrix}
+                0 & 1
+            \end{bmatrix}
+        \]
+        We will now check if this is indeed the total derivative. We must check whether 
+        \[
+            \lim\limits_{(h,k) \to (0,0)} \frac{\abs{f(h,k) - f(0,0) -0h - 1k}}{\sqrt{h^2 + k^2}} = 0
+        \]
+        For $k \neq 0$, we have that
+        \[
+             \frac{\abs{f(h,k) - f(0,0) -0h - 1k}}{\sqrt{h^2 + k^2}} = \abs{\frac{k}{\abs{k}} - \frac{k}{\sqrt{h^2+k^2}}}
+        \]
+        Along the curve $h=k$ with $k\neq 0$, the above expression becomes
+        \[
+            \abs{\frac{k}{\abs{k}} - \frac{k}{\sqrt{h^2+k^2}}} = \abs{\frac{k}{\abs{k}} - \frac{k}{\sqrt{2k^2}}} = \left( 1 - \frac{1}{\sqrt{2}} \right)
+        \]
+        
+        Clearly the limit of this expression is not zero (which is what we wanted it to be). Thus, $f$ is not differentiable at $(0,0)$. 
+        
+        \medskip
+        
+        \underline{Remark:} The above does not show that the limit is $\left( 1 - \frac{1}{\sqrt{2}} \right)$. In fact, the limit does not exist at all. However, this is sufficient to show that the limit is not zero (which is all we required).
+    \end{soln}
+\end{enumerate}
+
+\newpage\section{Week 6}
+
+\textbf{Sheet 6}
+\begin{enumerate}[leftmargin=*]
+    \itemsep0.5em
+    \item[(2)] Find the directions in which the directional derivative of $f(x,y) \vcentcolon= x^2 + \sin{xy}$ at the point $(1,0)$ is $1$.
+    
+    \begin{soln}
+        Since $f$ is differentiable, we have that
+        \[
+            \nabla_{\underline{u}}f(1,0) = \left( \nabla f(1,0) \right) \cdot \underline{u}
+        \]
+        for any unit vector $\underline{u}$. The partials of $f$ can be computed as
+        \[
+            f_x(x_0, y_0) = 2x_0 + y_0 \cos{x_0 y_0} \quad \text{and} \quad f_y(x_0, y_0) = x_0 \cos{x_0 y_0}
+        \]
+        Thus, the gradient of $f$ at $(1,0)$ is given by
+        \[
+            \nabla f(1,0) = \begin{bmatrix}
+                f_x(1,0) & f_y(1,0)
+            \end{bmatrix} = \begin{bmatrix}
+                2 & 1
+            \end{bmatrix}
+        \]
+        Let $\underline{u} = \begin{bmatrix} u_1 & u_2 \end{bmatrix}$ be an arbitrary unit vector. Taking the dot product and equating it to $1$ gives us
+        \[
+            2u_1 + u_2 = 1 \implies u_2 = 1 - 2u_1
+        \]
+        Since $\underline{u}$ is a unit vector, we also have
+        \[
+            u_1^2 + u_2^2 = 1
+        \]
+        Substituting $u_2$ in terms of $u_1$, we get
+        \[
+            u_1^2 + \left( 1 - 2u_1 \right)^2 = 1 \implies 5u_1^2 -4u_1 = 0
+        \]
+        \[
+            \therefore u_1 = 0 \quad \text{or} \quad \frac{4}{5}
+        \]
+        The corresponding values of $u_2$ are $1$ and $-\frac{3}{5}$. Thus, the required directions are
+        \[
+            \begin{bmatrix}
+                0 & 1
+            \end{bmatrix} \quad \text{and} \quad 
+            \begin{bmatrix}
+                \frac{4}{5} & -\frac{3}{5}
+            \end{bmatrix}
+        \]
+    \end{soln}
+    
+    \newpage
+    
+    \item[(4)] Find $\nabla_{\underline{u}} F(2,2,1)$, where $F(x,y,z) = 3x-5y+2z$ and $\underline{u}$ is the unit vector in the direction of the outward normal to the sphere $x^2 + y^2 + z^2 = 9$ at $(2,2,1)$.
+    
+    \begin{soln}
+        Let $S(x,y,z) \vcentcolon= x^2 + y^2 + z^2$ for $(x,y,z) \in \mathbb{R}^3$. We get that $\left( \nabla S \right)(x_0, y_0, z_0) = 2\left( x_0, y_0, z_0 \right)$. That is, the direction of the outward normal to a sphere at a point on the sphere is the direction of the vector joining the center of the sphere to the point. Thus, the required \emph{unit} vector $\underline{u}$ is 
+        \[
+            \underline{u} = \frac{1}{3} \left( 2,2,1 \right)
+        \]
+        The gradient of $F$ (at $(2,2,1)$) can be calculated as
+        \[
+            \nabla F(2,2,1) = \begin{bmatrix}
+            3 & -5 & 2
+            \end{bmatrix}
+        \]
+        Since $F$ is differentiable, we have
+        \[
+            \nabla_{\underline{u}} F(2,2,1) = \left( \nabla F(2,2,1) \right) \cdot \underline{u} = -\frac{2}{3}
+        \]
+    \end{soln}
+    
+    \newpage
+    
+    \item[(5)] Given $\sin{\left(x+y\right)} + \sin{\left( y+z \right)} = 1$, find $\dfrac{\partial^2 z}{\partial x \, \partial y}$ provided $\cos{\left(y+z\right)} \neq 0$.
+    
+    \begin{soln}
+        We are given that 
+        \[
+            \sin(x+y) + \sin(y+z) = 1 \label{eq:given} \tag{$\star$}
+        \]
+        Partially differentiating \eqref{eq:given} with respect to $x$ gives us
+        \[
+            \cos(x+y) + \cos(y+z) \cdot \frac{\partial z}{\partial x} = 0 \label{eq:del_x} \tag{\textdagger}
+        \]
+        Similarly, partially differentiating \eqref{eq:given} with respect to $y$ gives us
+        \[
+            \cos(x+y) + \cos(y+z) \cdot \left( 1 + \frac{\partial z}{\partial y} \right) = 0 \label{eq:del_y} \tag{\textdaggerdbl}
+        \]
+        Now, partially differentiating \eqref{eq:del_y} with respect to $x$, we get
+        \[
+            -\sin(x+y) - \sin(y+z) \cdot \textcolor{blue}{\left( 1 + \frac{\partial z}{\partial y} \right) \cdot \left( \frac{\partial z}{\partial x} \right)} + \cos(y+z) \cdot \frac{\partial^2 z}{\partial x \, \partial y} = 0
+        \]
+        On re-arranging and making substitutions for the terms in blue from \eqref{eq:del_x} and \eqref{eq:del_y}, we get
+        \begin{align*}
+            \frac{\partial^2 z}{\partial x \, \partial y} &= \frac{1}{\cos(y+z)} \left[  \sin(x+y) + \sin(y+z) \cdot \left( 1 + \frac{\partial z}{\partial y} \right) \frac{\partial z}{\partial x} \right] \\
+            &= \frac{1}{\cos(y+z)} \left[  \sin(x+y) + \sin(y+z) \cdot \left( - \frac{\cos(x+y)}{\cos(y+z)} \right) \cdot \left( - \frac{\cos(x+y)}{\cos(y+z)} \right)\right] \\
+            &= \boxed{\frac{\sin(x+y)}{\cos(y+z)} + \tan(y+z) \cdot \frac{\cos^2(x+y)}{\cos^2(y+z)}}
+        \end{align*}
+    \end{soln}
+    
+    \newpage
+    
+    \item[(8)] Analyse the following functions for local maxima, local minima and saddle points. 
+    
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item[(i)] $f(x,y) = \left( x^2 - y^2 \right) e^{-\frac{x^2+y^2}{2}}$
+            \item[(ii)] $f(x,y) = x^3 - 3xy^2$
+        \end{enumerate}
+    \end{multicols}
+    
+    \begin{enumerate}[leftmargin=*]
+        \itemsep0.5em
+        \item[(i)] \begin{soln}
+            First note that $f$ is defined on all of $\mathbb{R}^2$ and all partial derivatives of second order exist and are continuous everywhere. Thus, the second derivative test is applicable. For $(x_0, y_0)$ to be a point of local extremum or a saddle point, we must have $(\nabla f)(x_0, y_0) = 0$. We have
+            \[
+                f_x(x,y) = x \cdot e^{-\frac{x^2+y^2}{2}} \cdot \left( -x^2 + y^2 + 2\right)
+            \]
+            \[
+                f_y(x,y) = y \cdot e^{-\frac{x^2+y^2}{2}} \cdot \left( -x^2 + y^2 - 2\right)
+            \]
+            
+            Solving $(\nabla f)(x_0, y_0) = 0$ gives us the following set of solutions:
+            \[
+                (x_0, y_0) \in \left\{ (0,0), (0,\sqrt{2}), (0,-\sqrt{2}), (\sqrt{2}, 0), (-\sqrt{2}, 0) \right\}
+            \]
+            
+            We will next use the determinant test to determine the exact nature of these points. Recall 
+            \[
+                \left( \Delta f \right)(x_0, y_0) \vcentcolon= f_{xx}(x_0, y_0) \cdot f_{yy}(x_0, y_0) - \left( f_{xy}(x_0, y_0) \right)^2
+            \]
+            For our case, we have
+            \[
+                \left( \Delta f \right)(x,y) = -e^{-x^2-y^2} \cdot \left( x^6 - x^4 y^2 - 3x^4 -x^2 y^4 + 22x^2y^2 -8x^2 + y^6 - 3y^4 -8y^2 +4  \right)
+            \]
+            We also have
+            \[
+                f_{xx}(x,y) = e^{-\frac{x^2+y^2}{2}} \cdot \left( x^4 - x^2y^2 -5x^2 +y^2 + 2 \right)
+            \]
+            
+            $(0,0)$ is clearly a saddle point as the discriminant is $-4 < 0$.
+            
+            \medskip
+            
+            For $(0, \pm \sqrt{2})$, the discriminant turns out to be positive along with $f_{xx}$ positive and hence, these are points of local minima. For $(\pm \sqrt{2}, 0)$, the discriminant turns out to be positive along with $f_{xx}$ negative and hence, these are points of local maxima.
+        \end{soln}
+        
+        \newpage
+        
+        \item[(ii)] \begin{soln}
+            Again, $f$ is defined on all of $\mathbb{R}^2$ and all partial derivatives of second order exist and are continuous everywhere. The second derivative test is thus applicable. For $(x_0, y_0)$ to be a point of local extremum or a saddle point, we must have $(\nabla f)(x_0, y_0) = 0$. We have
+            \[
+                f_x(x,y) = 3x^2 - 3y^2
+            \]
+            \[
+                f_y(x,y) = -6xy
+            \]
+            Solving $(\nabla f)(x_0, y_0) = 0$ gives us the solution $(0,0)$. We will now utilise the discriminant test to determine the nature of $(0,0)$. 
+            
+            \medskip
+            
+            We have
+            \[
+                \left( \Delta \right) f(x_0, y_0) = -36(x_0^2 + y_0^2 )
+            \]
+            Thus, at the origin, the discriminant is zero and thus, the test is \emph{inconclusive!} Thus, we must use some other method to determining the nature at the origin. 
+            
+            \medskip
+            
+            Note that $f(x, 0) = x^3$. Given any $\epsilon > 0$, we may define $\delta \vcentcolon= \frac{\epsilon}{2}$. We then have
+            \[
+                f(\delta, 0) > f(0,0) > f(-\delta, 0)
+            \]
+            Also, 
+            \[
+                (\delta, 0), (-\delta, 0) \in D_{\epsilon}(0,0)
+            \]
+            for any $\epsilon > 0$. Thus, in any neighbourhood around $(0,0)$ we can find points where the value that the function attains is both greater as well as lesser than the value attained at $(0,0)$. Hence, $(0,0)$ is neither a local minima nor a local maxima, and hence, a saddle point by definition.
+        \end{soln}
+    \end{enumerate}
+    
+    \newpage
+    
+    \item[(9)] Find the absolute maximum and absolute minimum of 
+    \[
+        f(x,y) = \left( x^2 - 4x \right) \cdot \cos y \, \text{ for } \, 1 \leq x \leq 3, -\frac{\pi}{4} \leq y \leq \frac{\pi}{4}
+    \]
+    \begin{soln}
+        Observe that the domain is a closed and bounded set. Since $f$ is continuous on the domain, it does achieve a maximum and a minimum. For interior points $(x,y)$, we have
+        \[
+        f_x(x,y) = \left( 2x - 4 \right) \cdot \cos y
+        \]
+        \[
+            f_y(x,y) = - \left( x^2 - 4x \right) \cdot \sin y
+        \]
+        Thus, the only critical point is $(2,0)$. 
+        
+        \medskip
+        
+        Next, we will check the `right boundary', that is, we will restrict ourselves to $x = 3$. Here, the function reduces to $-3\cos y$ for $y \in \left[ -\frac{\pi}{4}, \frac{\pi}{4} \right]$. We can now treat this as a function of one variable. The boundary points here are $\left(3,-\frac{\pi}{4}\right)$ and $\left(3, \frac{\pi}{4}\right)$ and the critical point is $(3,0)$. Similarly, the `left boundary' gives us the points $\left( 1, -\frac{\pi}{4} \right)$, $(1,0)$ and $\left(1, \frac{\pi}{4} \right)$. Similarly, the top boundary gives us the points $\left( 1, \frac{\pi}{4} \right)$, $\left( 2, \frac{\pi}{4} \right)$ and $\left( 3, \frac{\pi}{4} \right)$ whereas the bottom boundary gives us the points $\left( 1, -\frac{\pi}{4} \right)$, $\left( 2, -\frac{\pi}{4} \right)$ and $\left( 3, -\frac{\pi}{4} \right)$. Now, all we need to do is calculate the value $f$ takes at these points and compare. 
+        
+        \medskip
+        \begin{center}
+            \begin{tabular}{|c|c|}
+            \thead{$(x_0, y_0)$} & \thead{$f(x_0, y_0)$} \\
+            \hline 
+            $(2,0)$ & $-4$ \\
+            \hline
+            $(3,0)$ & $-3$ \\
+            \hline
+            $(3, \pi/4)$ & $-3/\sqrt{2}$ \\
+            \hline
+            $(2, \pi/4)$ & $-4/\sqrt{2}$ \\
+            \hline
+            $(1, \pi/4)$ & $-3/\sqrt{2}$ \\
+            \hline
+            $(1,0)$ & $-3$ \\
+            \hline
+            $(1,-\pi/4)$ & $-3/\sqrt{2}$ \\
+            \hline
+            $(2, -\pi/4)$ & $-4/\sqrt{2}$ \\
+            \hline
+            $(3, -\pi/4)$ & $-3/\sqrt{2}$ \\
+            \hline
+            \end{tabular}
+        \end{center}
+        
+        Thus, we get $f_{\min} = -4$ at $(2,0)$ and $f_{\max} = -\frac{3}{\sqrt{2}}$ at $(1, \pm \pi/4)$ and $(3, \pm \pi/4)$.
+    \end{soln}
+
+\end{enumerate}
+
+
+
     
 
 \end{document}
